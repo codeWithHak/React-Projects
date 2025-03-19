@@ -12,14 +12,15 @@ function App() {
   // const [latitude, setLatitude] = useState();
   const [city, setCity] = useState();
 
+  // a useEffect that applies auto focus on input when component renders
   useEffect(()=>{
       inputRef.current.focus()
   },[])
 
+  // handling enter key when user press enter api should be fethced
   const handleEvent = (e)=>{
     if (e.key === "Enter"){
       fetchLatitude()
-      fetchWeather()
     }
   }
 
@@ -33,12 +34,17 @@ function App() {
       if (!response.ok) {
         throw new Error("Error occured while fetching API");
       }
-      const json = await response.json();
-      if (json.length < 1) {
+      
+      const [json] = await response.json();
+      if (json.name.length < 1) {
         setIsLoading(false)
         throw new Error("City not found")
       }
-        console.log(json);
+      fetchWeather(json.lat,json.lon)
+        console.log("Latitude",json);
+        console.log("Lat",json.lat);
+        console.log("Lon",json.lon);
+        
         
         setIsLoading(false)
       
@@ -51,10 +57,7 @@ function App() {
   
   }
   
-const fetchWeather = async ()=>{
-
-  const lat = data.map((weather)=>weather.lat)
-  const lon = data.map((weather)=>weather.lon)
+const fetchWeather = async (lat,lon)=>{
 
   try{
     setIsLoading(true)
@@ -62,10 +65,12 @@ const fetchWeather = async ()=>{
     if(!res.ok){
       throw new Error("Failed to fetch weather")
     }
-    const json = res.json()
-    setIsLoading(false)
+    const json = await res.json()
     setData(json)
-    console.log(json);
+    setIsLoading(false)
+    console.log("Weather Data",json);
+    
+    console.log("Temp: ",tempInCelcius.toFixed(2));
     
   }
   catch(error){
@@ -76,8 +81,10 @@ const fetchWeather = async ()=>{
 
 const handleFecth = ()=>{
   fetchLatitude()
-  fetchWeather()
 }
+
+const condition = data?.weather[0].main
+const tempInCelcius = data?.main.temp-273.15
 
   // if (error) return <p>Error...{error}</p>;
  
@@ -97,7 +104,9 @@ const handleFecth = ()=>{
       {data && !isLoading && (
         
         <div key={data.name}>
-          <p >Temp:{data.main.temp}</p>
+          <p >Temp:{tempInCelcius.toFixed(2)}</p>
+          <p >Condition: {condition}</p>
+          {/* <p >Temp:{data.cod}</p> */}
           </div>
         
       )}
