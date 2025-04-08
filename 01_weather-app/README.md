@@ -16,8 +16,6 @@ This project helped me master:
 - 📡 Fetches latitude & longitude for the city using the **OpenWeather Geo API**
 - 🌆 Then uses that lat/lon to fetch weather data via the **OpenWeather Current Weather API**
 - ☁️ Displays clean, formatted weather info in the UI
-- ⚛️ Built with modern **React functional components** & hooks (`useState`, `useEffect`)
-- 🎨 Stylish, responsive UI (perfect for learning UI + API combo)
 
 ---
 
@@ -25,18 +23,7 @@ This project helped me master:
 
 - ✅ How to **fetch APIs in React** using `fetch()`
 - ✅ How to **handle chained API calls** (i.e., make one call, wait for the result, then use that result in the second call)
-- ✅ How to **manage state** and update UI with real-time data
 - ✅ How to handle asynchronous code using `async/await`
-- ✅ How to build a real-world, **user-driven app** using APIs
-
----
-
-## 🔧 Tech Stack
-
-- **React**
-- **JavaScript (ES6+)**
-- **OpenWeatherMap API**
-
 
 ---
 
@@ -44,8 +31,6 @@ This project helped me master:
 
 - [OpenWeather Geo API](https://openweathermap.org/api/geocoding-api)
 - [OpenWeather Current Weather API](https://openweathermap.org/current)
-
----
 
 ---
 
@@ -59,5 +44,3 @@ cd 01-weather-app
 npm i
 npm start
 ```
-
-
