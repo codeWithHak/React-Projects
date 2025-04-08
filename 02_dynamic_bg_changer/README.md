@@ -5,7 +5,6 @@ A fun and interactive **React app** that lets users change the background color 
 This project helped me strengthen:
 - ⚛️ Using **React `useState`** for UI interactivity
 - 🎯 Creating dynamic styling based on user actions
-- 🧼 Writing clean, reusable components
 
 ---
 
@@ -14,7 +13,6 @@ This project helped me strengthen:
 - 🎨 Change background color with a single click
 - 🧠 Uses React `useState` to manage current color
 - ⚡ Instant visual feedback based on user choice
-- 🧩 Clean, minimal, and fully responsive layout
 
 ---
 
@@ -22,7 +20,6 @@ This project helped me strengthen:
 
 - ✅ How to use **state** in React for dynamic UI changes
 - ✅ How to update styles dynamically using state
-- ✅ How to structure simple components in React
 - ✅ Handling events like `onClick` in React effectively
 
 ---
@@ -32,8 +29,9 @@ This project helped me strengthen:
 1. Clone this repo:
 
 ```bash
-git clone https://github.com/yourusername/02-dynamic-bg-changer.git
+git clone https://github.com/codeWithHak/React-Projects/02_dynamic_bg_changer.git
 cd 02-dynamic-bg-changer
 npm i
-npm start ```
+npm start
+ ```
 
