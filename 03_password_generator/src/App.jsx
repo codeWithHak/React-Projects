@@ -19,11 +19,13 @@ function App() {
   const copyToClipboard = useCallback(()=>{
     inputRef?.current.select()
     window.navigator.clipboard.writeText(password)
-    setCopyButton((prev)=>!prev)
+    if (document.activeElement === inputRef.current){
+      setCopyButton(false)
+    }
   },[password])
 
   const passwordGenerator = useCallback(() => {
-    setCopyButton((prev)=>!prev)
+    setCopyButton(true)
     let pass = "";
     let str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     if (isNumAllowed) str += "0123456789";
@@ -67,7 +69,7 @@ function App() {
             className="outline-none bg-white py-2 px-4 rounded text-gray-950 w-full"
           />
           {copyButton?
-             <button className="bg-blue-800 px-2 py-2 rounded" onClick={copyToClipboard}>Copy</button>
+             <button className="bg-blue-800 px-2 py-2 rounded hover:bg-blue-900 cursor-pointer" onClick={copyToClipboard}>Copy</button>
              
              :
              <button className="bg-blue-800 px-2 py-2 rounded" onClick={copyToClipboard}>Copied</button>
@@ -75,7 +77,7 @@ function App() {
              }
           
         </div>
-        <div className="flex justify-between px-3 mt-4 text-white">
+        <div className="flex justify-between px-3 mt-4 text-white ">
           <div>
             <input
               type="range"
@@ -83,8 +85,9 @@ function App() {
               min='8'
               max='50'
               value={length}
-              log
+              
               onChange={handleLength}
+              className="cursor-pointer"
             />
             <label htmlFor="length">Length {length}</label>
           </div>
@@ -94,6 +97,7 @@ function App() {
               id="numbers"
               defaultChecked={isNumAllowed}
               onChange={() => setIsNumAllowed(prev => !prev)}
+              className="cursor-pointer"
             />
             <label htmlFor="numbers">Numbers</label>
           </div>
@@ -103,6 +107,7 @@ function App() {
               id="characters"
               defaultChecked={isCharAllowed}
               onChange={() => setIsCharAllowed(prev => !prev)}
+              className="cursor-pointer"
             />
             <label htmlFor="characters">Characters</label>
           </div>
